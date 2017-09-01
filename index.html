@@ -139,6 +139,7 @@ body{
             <div class="service-box">
               <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
               <h3>Locate Me</h3>
+              <button onclick="getLocation()">Try It</button><p id="demo"></p>
               <p class="text-muted">Find nearest agent around you!</p>
             </div>
           </div>
@@ -278,7 +279,7 @@ document.write('<iframe src="https://www3.smartchatbox.com/shoutbox/sb.php?key=9
 document.write('</iframe></div></div>');
 //]]>
 </script>
-<div id="close-chat" onclick="closeChatbox()">&times;</div>
+<div id="close-chat" onclick="pecloseChatbox()">&times;</div>
 <div id="minim-chat" onclick="minimChatbox()"><span class="minim-button">&minus;</span></div>
 <div id="maxi-chat" onclick="loadChatbox()"><span class="maxi-button">&plus;</span></div>
 </div>
@@ -310,6 +311,22 @@ function minimChatbox(){var e=document.getElementById("minim-chat");e.style.disp
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
